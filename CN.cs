@@ -53,7 +53,7 @@ int Rekurze(int CharakterCislo, int[] FixniIndex= null)
     {
         
         int suma = 0;
-        for (int i = 0;i<PocetModulu;i++)
+        for (int i = 0;i<PocetModulu;i++) //suma nadrazenych sum cyklu
         {
              if (FixniIndex.Contains(i))
             {continue;}
