@@ -1,9 +1,9 @@
 using MathNet.Numerics;
 
-List<int> RetardJedna = new List<int>{1,0,0};
-List<int> ReatrdDva = new List<int>{0,1,0};
-List<int> RetardTri = new List<int>{0,0,1};
-List<List<int>> Matice = new List<List<int>>{RetardJedna,ReatrdDva,RetardTri};
+List<int> SJedna = new List<int>{1,0,0};
+List<int> SeatrdDva = new List<int>{0,1,0};
+List<int> STri = new List<int>{0,0,1};
+List<List<int>> Matice = new List<List<int>>{SJedna,SDva,STri};
 int CharakterCisloVerze = 3;
 int PocetModulu = 3;
 int Rekurze(int CharakterCislo, int[] FixniIndex= null)
