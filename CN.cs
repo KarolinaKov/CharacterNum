@@ -8,10 +8,10 @@ int CharakterCisloVerze = 3;
 int PocetModulu = 3;
 int Rekurze(int CharakterCislo, int[] FixniIndex= null)
 {
-    if (FixniIndex==null)
+    if (FixniIndex==null) //impliciti nastaveni delky arraye podle skalaru CharakterCislo z uzivatelskeho vstupu
     {
-// puvodni hodnoty(PocetModulu+1) arraye  musi byt jine nez mozne hodnoty, jinak budou sum cykly nespravne 
-//preskakovat
+// defaultni hodnoty(PocetModulu+1) arraye  musi byt jine nez mozne hodnoty, jinak budou sum cykly nespravne 
+//preskakovat, plus jedna protoze CharakterCislo nemuze byt vetsi nez pocet modulu
      FixniIndex =Enumerable.Repeat(PocetModulu+1,CharakterCislo).ToArray();
     }
     if (CharakterCislo == 1)
@@ -23,11 +23,12 @@ int Rekurze(int CharakterCislo, int[] FixniIndex= null)
             {continue;}
             FixniIndex[FixniIndex.Length-1] = i;
             int produkt = 1;
-            for (int j = 0; j<PocetModulu; j++)//produkt, nastaveni sloupce
+            for (int j = 0; j<PocetModulu; j++)//produkt, prochazeni vsech sloupcu v matici
             {
                 bool LogSoucin = false;
                 
-                for ( int l = 0; l < FixniIndex.Length; l++)// prochazeni fixnimi indexy z predeslych sum, resp radky
+                for ( int l = 0; l < FixniIndex.Length; l++)// prochazeni fixnimi indexy z predeslych sum, resp radky 
+                                                            // a provadeni logickeho soucinu
                 {
                     bool LocalBool = false;
                    if (Matice[FixniIndex[l]][j]==1)
@@ -35,7 +36,7 @@ int Rekurze(int CharakterCislo, int[] FixniIndex= null)
                     LocalBool = true;
                    }
                    
-                   LogSoucin = LogSoucin || LocalBool;
+                   LogSoucin = LogSoucin || LocalBool; 
                 }
                 if (!LogSoucin)
                 {
@@ -57,10 +58,7 @@ int Rekurze(int CharakterCislo, int[] FixniIndex= null)
         {
              if (FixniIndex.Contains(i))
             {continue;}
-            else 
-            {
-               FixniIndex[FixniIndex.Length-CharakterCislo] = i;
-            }
+            FixniIndex[FixniIndex.Length-CharakterCislo] = i;
             suma+=Rekurze(CharakterCislo-1,FixniIndex);
         }
         FixniIndex[FixniIndex.Length-CharakterCislo] = PocetModulu+1;// uvolneni indexove hodnoty pro nadrazene sum cykly
